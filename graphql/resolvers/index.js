@@ -44,7 +44,7 @@ module.exports = {
       return CatBreed.find()
         .then(breeds => {
           return breeds.filter(breed => {
-            if (breed.name.includes(args.name)) {
+            if (breed.name.toLowerCase().includes(args.name.toLowerCase())) {
               return { ...breed._doc };
             }
           })
