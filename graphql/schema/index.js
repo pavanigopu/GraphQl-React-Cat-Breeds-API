@@ -20,6 +20,9 @@ type RootQuery {
   breeds: [CatBreed!]!
   breedById(id: String!): CatBreed!
   searchByName(name: String!): [CatBreed]
+  filterByOrigin(origin: String): [CatBreed]
+  filterBreeds(search: String, origin: String): [CatBreed]
+  origins: [String]
 }
 
 type RootMutation {

@@ -52,5 +52,55 @@ module.exports = {
         .catch(err => {
           throw err;  
         });
+    },
+    filterByOrigin: args => {
+      return CatBreed.find()
+        .then(breeds => {
+          return breeds.filter(breed => {
+            if (breed.origin.toLowerCase() === args.origin.toLowerCase()) {
+              return { ...breed._doc };
+            }
+          })
+        })
+        .catch(err => {
+          throw err;  
+        });
+    },
+    filterBreeds: args => {
+      return CatBreed.find()
+        .then(breeds => {
+          let r = breeds;
+          if (args.origin !== "") {
+            r = breeds.filter(breed => {
+              if (breed.origin.toLowerCase() === args.origin.toLowerCase()) {
+                return { ...breed._doc };
+              }
+            })
+          } 
+          if (args.search !== "") {
+            return r.filter(breed => {
+              if (breed.name.toLowerCase().includes(args.search.toLowerCase())) {
+                return { ...breed._doc };
+              }
+            })
+          } else {
+            return r;
+          }
+        })
+        .catch(err => {
+          throw err;  
+        });
+    },
+    origins: () => {
+      return CatBreed.find()
+        .then(breeds => {
+          const origins = breeds.map(breed => {
+            return breed._doc.origin;
+          });
+          return origins.filter((item, i, ar) => ar.indexOf(item) === i);
+        })
+        .catch(err => {
+          throw err;  
+        });
     }
   }
