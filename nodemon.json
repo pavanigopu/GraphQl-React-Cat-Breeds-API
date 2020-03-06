@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "atlas-admin",
+        "MONGO_PASSWORD": "aVKMs6zNIvXVaDZJ",
+        "MONGO_DB": "cat-breeds-db"
+    }
+}
