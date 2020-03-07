@@ -28,7 +28,7 @@ app.use("/graphql", graphQLHttp({
 }));
 
 mongoose.connect(
-  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-jf1qf.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-jf1qf.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true },
 ).then(() => {
   app.listen(5000);
 }).catch(err => {
